@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free Fire Login</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+      background: url('https://i.pinimg.com/originals/04/a2/36/04a2361cf5292b04f50f01f2c72e0b77.gif') no-repeat center center fixed;
+      background-size: cover;
+      overflow: hidden;
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: 0;
+    }
+
+    .login-container {
+      position: relative;
+      z-index: 1;
+      background: rgba(0, 0, 0, 0.75);
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 0 25px rgba(255, 166, 0, 0.7);
+      width: 320px;
+      text-align: center;
+      animation: fadeIn 1.5s ease-in-out;
+    }
+
+    .login-container h2 {
+      margin-bottom: 25px;
+      font-size: 28px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #ffb400;
+      text-shadow: 0 0 10px #ffb400, 0 0 20px #ff8c00;
+    }
+
+    .login-container input {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 8px;
+      outline: none;
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+      font-size: 15px;
+      transition: all 0.3s;
+    }
+
+    .login-container input:focus {
+      background: rgba(255, 255, 255, 0.2);
+      box-shadow: 0 0 10px #ffb400;
+    }
+
+    .login-container button {
+      width: 100%;
+      padding: 12px;
+      margin-top: 15px;
+      background: linear-gradient(90deg, #ff8c00, #ffb400);
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: bold;
+      color: #000;
+      cursor: pointer;
+      transition: 0.4s;
+      text-transform: uppercase;
+      box-shadow: 0 0 15px #ffb400;
+    }
+
+    .login-container button:hover {
+      background: linear-gradient(90deg, #ffb400, #ff8c00);
+      transform: scale(1.05);
+      box-shadow: 0 0 25px #ff8c00, 0 0 35px #ffb400;
+    }
+
+    .login-container p {
+      margin-top: 15px;
+      color: #ccc;
+      font-size: 14px;
+    }
+
+    .login-container a {
+      color: #ffb400;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .login-container a:hover {
+      color: #fff;
+      text-shadow: 0 0 10px #ffb400;
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(-20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Popup styles */
+    .popup {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(0, 0, 0, 0.85);
+      color: #ffb400;
+      padding: 40px 60px;
+      border-radius: 15px;
+      box-shadow: 0 0 30px rgba(255, 180, 0, 0.8);
+      text-align: center;
+      font-size: 22px;
+      z-index: 10;
+      text-shadow: 0 0 15px #ffb400;
+      animation: popupFade 0.8s ease-in-out;
+    }
+
+    @keyframes popupFade {
+      from { opacity: 0; transform: translate(-50%, -40%); }
+      to { opacity: 1; transform: translate(-50%, -50%); }
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay"></div>
+
+  <div class="login-container" id="loginBox">
+    <h2>Free Fire Login</h2>
+    <form id="loginForm">
+      <input type="text" id="username" placeholder="Enter Username" required>
+      <input type="password" id="password" placeholder="Enter Password" required>
+      <button type="submit">Login</button>
+    </form>
+    <p>Don't have an account? <a href="#">Sign Up</a></p>
+  </div>
+
+  <div class="popup" id="popupBox"></div>
+
+  <script>
+    const form = document.getElementById('loginForm');
+    const popup = document.getElementById('popupBox');
+    const loginBox = document.getElementById('loginBox');
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const username = document.getElementById('username').value.trim();
+
+      // Hide login box
+      loginBox.style.display = 'none';
+
+      // Show popup message
+      popup.innerHTML = `🔥 Login Successful 🔥<br><br>Welcome <b>${username || 'Player'}</b>!`;
+      popup.style.display = 'block';
+    });
+  </script>
+</body>
+</html>
